@@ -154,3 +154,27 @@ lastFulfilled([promise1, promise3])
   .then((res) => console.log(`Promise.lastFulfilled() = ${res}`))
   .catch((err) => console.log(`Promise.lastFulfilled() error = ${err}`));
 </pre>
+<h2>3. Fetching deep nested Object property </h2>
+<p> A string will be passed as an argument, if there is an embedded key present in the object, return it else return undefined. <i>(MakeMyTrip Interview Question)</i></p>
+<pre>const isExist = (str) => {
+    const arr = str.split(".");
+    //console.log(arr);
+    let obj = {
+        a:{
+            b:{
+                c: 1,
+                d:2
+            },
+            h: 3
+        }
+    }
+    let ans = obj;
+    arr.forEach(a=>{
+        ans = ans[a];
+    })
+    return ans;
+}
+
+console.log(isExist("a.b.c")); // 1
+console.log(isExist("a.b.c.d")); // 2
+console.log(isExist("a.b.d")); // undefined</pre>
