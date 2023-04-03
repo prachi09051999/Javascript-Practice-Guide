@@ -14,9 +14,7 @@ const curriedSum = (a) => (b) => a+b;
 <pre>
 const findInfSum = (...args) => {
   let result = 0;
-  for(let i=0;i<args.length;i++){
-    result += args[i];
-  }
+  args.forEach(arg =>result += arg);
   return result;
 }
 /* Output = 10 */
@@ -24,7 +22,7 @@ console.log(findInfSum(1,2,3,4));
 </pre>
 
 
-<p>Let's try <b>Currying</b> here - </p>
+ <p>Let's try <b>Currying</b> here - </p>
 
 
 <pre>
@@ -46,14 +44,10 @@ console.log(curriedInfSum(1)(2)(3)(4)());
 <pre>
 const curriedInfSumWithMultipleArgs = (...args1) => {
   let result = 0;
-  for(let i=0;i<args1.length;i++){
-    result += args1[i];
-  }
+  args1.forEach(arg=>result+=arg);
   return function curry(...args2){
     if(!args2.length===0) return result;
-    for(let i=0;i<args2.length;i++){
-       result += args2[i];
-  }
+    args2.forEach(arg => result+= arg);
     return curry;
   }
 }
