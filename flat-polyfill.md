@@ -7,15 +7,15 @@
  */
 function flat(arr, depth = 1) {
   const ans = [];
-  function flattening(arr1,count=0){
+  function flattening(arr1,depth){
     arr1.forEach(item => {
-      if(typeof item === 'object' && count < depth){
-        flattening(item,count+1);
+      if(typeof item === 'object' &&  depth > 0){
+        flattening(item,depth-1);
       }
       else ans.push(item);
     })
   }
-  flattening(arr,0);
+  flattening(arr,depth);
   return ans;
 }
 
