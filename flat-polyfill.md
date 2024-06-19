@@ -9,7 +9,7 @@ function flat(arr, depth = 1) {
   const ans = [];
   function flattening(arr1,count=0){
     arr1.forEach(item => {
-      if(typeof item === 'object' && count<depth){
+      if(typeof item === 'object' && count < depth){
         flattening(item,count+1);
       }
       else ans.push(item);
